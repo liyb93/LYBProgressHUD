@@ -173,9 +173,7 @@ public class LYBProgressHUD: NSView {
         label.backgroundColor = .clear
         return label
     }
-}
-
-public extension LYBProgressHUD {
+    
     public func show() {
         NSAnimationContext.runAnimationGroup { (context) in
             context.duration = 0.3
