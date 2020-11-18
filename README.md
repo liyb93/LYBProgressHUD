@@ -10,7 +10,7 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
 
 ## 预览
 
-![preview](https://raw.githubusercontent.com/liyb93/LYBProgressHUD/main/preview.gif)
+![preview](https://raw.githubusercontent.com/liyb93/LYBProgressHUD/master/preview.gif)
 
 ## 功能
 
