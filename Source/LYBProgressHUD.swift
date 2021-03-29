@@ -47,7 +47,7 @@ public class LYBProgressHUDStyle: NSObject {
     public var textFont: NSFont = .systemFont(ofSize: 15)
     public var indicatorColor: NSColor = .white
     
-    init(_ mode: Mode = .default, position: Position = .center, backgroundColor: NSColor = NSColor.black.withAlphaComponent(0.75), textColor: NSColor = .white, textFont: NSFont = .systemFont(ofSize: 15), indicatorColor: NSColor = .white) {
+    public init(_ mode: Mode = .default, position: Position = .center, backgroundColor: NSColor = NSColor.black.withAlphaComponent(0.75), textColor: NSColor = .white, textFont: NSFont = .systemFont(ofSize: 15), indicatorColor: NSColor = .white) {
         super.init()
         self.mode = mode
         self.position = position
