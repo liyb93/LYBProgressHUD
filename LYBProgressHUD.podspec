@@ -6,7 +6,7 @@ Pod::Spec.new do |spec|
   一款OSX平台上简洁易用的HUD组件
                    DESC
                    
-  spec.homepage     = "https://github.com/liyb93/LYBProgressHUD.git"
+  spec.homepage     = "https://github.com/liyb93/LYBProgressHUD"
   spec.license      = "MIT"
   spec.author             = { "liyb" => "libcm93@gmail.com" }
 
