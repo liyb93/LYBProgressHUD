@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -706,12 +706,12 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="LBProgressHUD" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="606" height="230"/>
+                    <view key="view" id="m2S-Jp-Qdl">
+                        <rect key="frame" x="0.0" y="0.0" width="576" height="230"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Rom-SE-Y4X">
-                                <rect key="frame" x="262" y="146" width="83" height="32"/>
+                                <rect key="frame" x="250" y="147" width="77" height="32"/>
                                 <buttonCell key="cell" type="push" title="default" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6cH-yM-aBa">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -721,7 +721,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bl2-c4-Jac">
-                                <rect key="frame" x="257" y="105" width="93" height="32"/>
+                                <rect key="frame" x="244" y="107" width="88" height="32"/>
                                 <buttonCell key="cell" type="push" title="indicator" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="gWI-2D-SFW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -731,7 +731,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eSH-gs-KsV">
-                                <rect key="frame" x="271" y="64" width="64" height="32"/>
+                                <rect key="frame" x="259" y="67" width="58" height="32"/>
                                 <buttonCell key="cell" type="push" title="text" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="xeG-mO-aQE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -741,7 +741,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="atM-4n-Y8L">
-                                <rect key="frame" x="-2" y="194" width="610" height="16"/>
+                                <rect key="frame" x="-2" y="194" width="580" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="三种样式" id="Ded-tz-vW5">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -749,7 +749,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DHL-TO-21f">
-                                <rect key="frame" x="24" y="13" width="126" height="32"/>
+                                <rect key="frame" x="23" y="17" width="120" height="32"/>
                                 <buttonCell key="cell" type="push" title="textColor" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="l36-dH-8ab">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -759,7 +759,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="IWd-6J-cL5">
-                                <rect key="frame" x="168" y="13" width="126" height="32"/>
+                                <rect key="frame" x="159" y="17" width="120" height="32"/>
                                 <buttonCell key="cell" type="push" title="textFont" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="anC-Bn-aDH">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -769,7 +769,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AAl-Gg-zf7">
-                                <rect key="frame" x="312" y="13" width="126" height="32"/>
+                                <rect key="frame" x="297" y="17" width="120" height="32"/>
                                 <buttonCell key="cell" type="push" title="background" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SwV-dY-kBE">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -779,7 +779,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cxu-w1-Y1y">
-                                <rect key="frame" x="456" y="13" width="126" height="32"/>
+                                <rect key="frame" x="433" y="17" width="120" height="32"/>
                                 <buttonCell key="cell" type="push" title="indicatorColor" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="o81-xj-AQK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -794,7 +794,7 @@
                             <constraint firstItem="IWd-6J-cL5" firstAttribute="top" secondItem="AAl-Gg-zf7" secondAttribute="top" id="5JX-4U-kYX"/>
                             <constraint firstItem="eSH-gs-KsV" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="6eN-wN-lbj"/>
                             <constraint firstItem="eSH-gs-KsV" firstAttribute="top" secondItem="Bl2-c4-Jac" secondAttribute="bottom" constant="20" id="7Nq-DV-PTq"/>
-                            <constraint firstItem="AAl-Gg-zf7" firstAttribute="leading" secondItem="IWd-6J-cL5" secondAttribute="trailing" constant="30" id="HG6-Mh-QpZ"/>
+                            <constraint firstItem="AAl-Gg-zf7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="IWd-6J-cL5" secondAttribute="trailing" constant="12" symbolic="YES" id="HG6-Mh-QpZ"/>
                             <constraint firstItem="cxu-w1-Y1y" firstAttribute="width" secondItem="DHL-TO-21f" secondAttribute="width" id="IZw-LM-oTv"/>
                             <constraint firstItem="IWd-6J-cL5" firstAttribute="leading" secondItem="DHL-TO-21f" secondAttribute="trailing" constant="30" id="InL-R5-KTV"/>
                             <constraint firstItem="atM-4n-Y8L" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="Nmh-bZ-hUH"/>
@@ -816,7 +816,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="635"/>
+            <point key="canvasLocation" x="60" y="738"/>
         </scene>
     </scenes>
 </document>

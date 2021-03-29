@@ -23,49 +23,55 @@ class LYBProgressHUDMaskView: NSView {
     override func mouseDown(with event: NSEvent) {}
 }
 
-public class LYBProgressHUD: NSView {
-    
-    public enum Style {
+public class LYBProgressHUDStyle: NSObject {
+    // 显示样式
+    public enum Mode {
         case `default`    // 指示器与文本
         case text   // 文本
         case indicator  // 指示器
     }
+    
+    // 显示位置
+    public enum Position {
+        case center // 居中
+        case top    // 居顶
+        case bottom // 居下
+        case left   // 居左
+        case right  // 居右
+    }
+    
+    public var mode: Mode = .default
+    public var position: Position = .center
+    public var backgroundColor: NSColor = NSColor.black.withAlphaComponent(0.75)
+    public var textColor: NSColor = .white
+    public var textFont: NSFont = .systemFont(ofSize: 15)
+    public var indicatorColor: NSColor = .white
+    
+    init(_ mode: Mode = .default, position: Position = .center, backgroundColor: NSColor = NSColor.black.withAlphaComponent(0.75), textColor: NSColor = .white, textFont: NSFont = .systemFont(ofSize: 15), indicatorColor: NSColor = .white) {
+        super.init()
+        self.mode = mode
+        self.position = position
+        self.backgroundColor = backgroundColor
+        self.textColor = textColor
+        self.textFont = textFont
+        self.indicatorColor = indicatorColor
+    }
+}
+
+public class LYBProgressHUD: NSView {
     
     private var maskView: NSView!
     private var contentView: NSView!
     private var textLabel: NSTextField?
     private var indicatorActivity: LYBProgressIndicator?
     private var superView: NSView!
-    private var style: Style = .default
+    private var style: LYBProgressHUDStyle!
     private var message: String?
     
-    public var contentBackgroundColor: NSColor = NSColor.black.withAlphaComponent(0.75) {
-        didSet {
-            contentView.wantsLayer = true
-            contentView.layer?.backgroundColor = contentBackgroundColor.cgColor
-        }
-    }
-    public var textColor: NSColor = .white {
-        didSet {
-            textLabel?.textColor = textColor
-        }
-    }
-    public var textFont: NSFont = .systemFont(ofSize: 15) {
-        didSet {
-            textLabel?.font = textFont
-            setupUI()
-        }
-    }
-    public var indicatorColor: NSColor = .white {
-        didSet {
-            indicatorActivity?.color = indicatorColor
-        }
-    }
-    
-    public init(in view: NSView, style: Style = .default, message: String? = nil) {
+    public init(in view: NSView, message: String? = nil, style: LYBProgressHUDStyle? = nil) {
         super.init(frame: view.bounds)
         superView = view
-        self.style = style
+        self.style = style ?? LYBProgressHUDStyle.init()
         self.message = message
         setupUI()
     }
@@ -84,12 +90,12 @@ public class LYBProgressHUD: NSView {
         maskView = LYBProgressHUDMaskView.init(frame: bounds)
         
         var contentSize: CGSize = CGSize.init(width: LYBProgressHUDContentMinWidth, height: LYBProgressHUDContentMinHeight)
-        switch style {
+        switch style.mode {
         case .default:  // 指示器与文本
             if let text = message { // 有文本
                 let maxWidth = superView.bounds.width - LYBProgressHUDSpacing * 2
                 let maxHeight = superView.bounds.height - LYBProgressHUDIndicatorWH - LYBProgressHUDSpacing * 3
-                let size = (text as NSString).boundingRect(with: CGSize.init(width: maxWidth, height: maxHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: textFont]).size
+                let size = (text as NSString).boundingRect(with: CGSize.init(width: maxWidth, height: maxHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: style.textFont]).size
                 
                 let contentWidth = max(size.width + LYBProgressHUDSpacing * 2, LYBProgressHUDContentMinWidth)
                 let contentHeight = max(size.height + LYBProgressHUDSpacing * 3 + LYBProgressHUDIndicatorWH, LYBProgressHUDContentMinHeight)
@@ -108,17 +114,15 @@ public class LYBProgressHUD: NSView {
                 indicatorActivity = createIndicator(with: .init(x: x, y: y, width: LYBProgressHUDIndicatorWH, height: LYBProgressHUDIndicatorWH))
                 indicatorActivity?.color = .white
             }
-            break
         case .indicator:    // 指示器
             let x = (contentSize.width / 2.0) - (LYBProgressHUDIndicatorWH / 2.0)
             let y = contentSize.height / 2.0 - (LYBProgressHUDIndicatorWH / 2.0)
             indicatorActivity = createIndicator(with: .init(x: x, y: y, width: LYBProgressHUDIndicatorWH, height: LYBProgressHUDIndicatorWH))
-            break
         case .text: // 文本
             if let text = message {
                 let maxWidth = superView.bounds.width - LYBProgressHUDSpacing * 2
                 let maxHeight = superView.bounds.height - LYBProgressHUDSpacing * 2
-                let size = (text as NSString).boundingRect(with: CGSize.init(width: maxWidth, height: maxHeight), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: textFont]).size
+                let size = (text as NSString).boundingRect(with: CGSize.init(width: maxWidth, height: maxHeight), options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedString.Key.font: style.textFont]).size
                 
                 let contentWidth = size.width + LYBProgressHUDSpacing * 2
                 let contentHeight = max(size.height + LYBProgressHUDSpacing * 2, LYBProgressHUDContentTextMinHeight)
@@ -127,14 +131,31 @@ public class LYBProgressHUD: NSView {
             } else {
                 fatalError("message不可为nil")
             }
-            break
         }
         
-        let x = superView.bounds.width / 2.0 - (contentSize.width / 2.0)
-        let y = superView.bounds.height / 2.0 - (contentSize.height / 2.0)
+        // 显示位置
+        var x: CGFloat, y: CGFloat;
+        switch style.position {
+        case .center:
+            x = superView.bounds.width / 2.0 - (contentSize.width / 2.0)
+            y = superView.bounds.height / 2.0 - (contentSize.height / 2.0)
+        case .top:
+            x = superView.bounds.width / 2.0 - (contentSize.width / 2.0)
+            y = superView.bounds.height - contentSize.height - LYBProgressHUDSpacing
+        case .bottom:
+            x = superView.bounds.width / 2.0 - (contentSize.width / 2.0)
+            y = LYBProgressHUDSpacing
+        case .left:
+            x = LYBProgressHUDSpacing
+            y = superView.bounds.height / 2.0 - (contentSize.height / 2.0)
+        case .right:
+            x = superView.bounds.width - contentSize.width - LYBProgressHUDSpacing
+            y = superView.bounds.height / 2.0 - (contentSize.height / 2.0)
+        }
+        
         contentView = NSView.init(frame: CGRect.init(origin: CGPoint.init(x: x, y: y), size: contentSize))
         contentView.wantsLayer = true
-        contentView.layer?.backgroundColor = contentBackgroundColor.cgColor
+        contentView.layer?.backgroundColor = style.backgroundColor.cgColor
         contentView.layer?.cornerRadius = LYBProgressHUDSpacing
         contentView.layer?.masksToBounds = true
         
@@ -147,15 +168,13 @@ public class LYBProgressHUD: NSView {
         if let label = textLabel {
             contentView.addSubview(label)
         }
-        
         // 监听superview尺寸变化
         superView.window?.delegate = self
-        
     }
 
     private func createIndicator(with frame: CGRect) -> LYBProgressIndicator {
         let indicator = LYBProgressIndicator.init(frame: frame)
-        indicator.color = indicatorColor
+        indicator.color = style.indicatorColor
         return indicator
     }
     
@@ -165,8 +184,8 @@ public class LYBProgressHUD: NSView {
         label.isEditable = false
         label.alignment = .center
         label.maximumNumberOfLines = 0
-        label.textColor = textColor
-        label.font = textFont
+        label.textColor = style.textColor
+        label.font = style.textFont
         // 背景色透明
         label.isBordered = false
         label.drawsBackground = false
@@ -192,8 +211,8 @@ public class LYBProgressHUD: NSView {
         }
     }
     
-    public class func show(in view: NSView, message: String? = nil, style: Style = .default) {
-        let hud = LYBProgressHUD.init(in: view, style: style, message: message)
+    public class func show(in view: NSView, message: String? = nil, style: LYBProgressHUDStyle? = nil) {
+        let hud = LYBProgressHUD.init(in: view, message: message, style: style)
         hud.show()
     }
     
