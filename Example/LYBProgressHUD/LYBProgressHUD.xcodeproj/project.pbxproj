@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04470718289B5BD100096EBF /* NSView+LYBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04470717289B5BD100096EBF /* NSView+LYBProgressHUD.swift */; };
 		EAF1A5B3255E86C700EFD1CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A5B2255E86C700EFD1CF /* AppDelegate.swift */; };
 		EAF1A5B5255E86C700EFD1CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A5B4255E86C700EFD1CF /* ViewController.swift */; };
 		EAF1A5B7255E86C900EFD1CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF1A5B6255E86C900EFD1CF /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04470717289B5BD100096EBF /* NSView+LYBProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+LYBProgressHUD.swift"; sourceTree = "<group>"; };
 		EAF1A5AF255E86C700EFD1CF /* LBProgressHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBProgressHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF1A5B2255E86C700EFD1CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAF1A5B4255E86C700EFD1CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				EAF1A5C4255E86E900EFD1CF /* LYBProgressHUD.swift */,
 				EAF1A5CC255E885A00EFD1CF /* LYBProgressIndicator.swift */,
+				04470717289B5BD100096EBF /* NSView+LYBProgressHUD.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04470718289B5BD100096EBF /* NSView+LYBProgressHUD.swift in Sources */,
 				EAF1A5CD255E885A00EFD1CF /* LYBProgressIndicator.swift in Sources */,
 				EAF1A5B5255E86C700EFD1CF /* ViewController.swift in Sources */,
 				EAF1A5C5255E86E900EFD1CF /* LYBProgressHUD.swift in Sources */,
