@@ -58,6 +58,7 @@ public class LYBProgressHUDStyle: NSObject {
     }
 }
 
+public typealias CompletionHandler = ()->()
 public class LYBProgressHUD: NSView {
     
     private var maskView: NSView!
@@ -216,10 +217,11 @@ public class LYBProgressHUD: NSView {
         hud.show()
     }
     
-    public class func dismiss(in view: NSView, after delay: TimeInterval = 0) {
+    public class func dismiss(in view: NSView, after delay: TimeInterval = 0, completionHandler: CompletionHandler? = nil) {
         view.subviews.filter({$0 is LYBProgressHUD}).forEach { (view) in
             (view as? LYBProgressHUD)?.dismiss(after: delay)
         }
+        completionHandler?()
     }
 }
 
