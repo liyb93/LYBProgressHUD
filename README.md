@@ -38,11 +38,19 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
   		indicatorColor:	指示器颜色
   */
   LYBProgressHUD.show(in: view, message: "加载成功", style: LYBProgressHUDStyle.init(.text))
+  或者
+  view.lyb.showHUD("加载成功") { style in
+    style.mode = .text
+    style.textFont = NSFont.boldSystemFont(ofSize: 20)
+    style.textColor = .orange
+  }
   /*
   	view: 父视图
   	after:	延迟移除，默认为0
   */
   LYBProgressHUD.dismiss(in: view, after: 3)
+  或者
+  view.dismiss(3)
   ```
 
 - 自定义属性
@@ -64,6 +72,12 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
   let hud = LYBProgressHUD.init(in: view, message: "加载中。。。", style: style)
   hud.show()
   hud.dismiss(after: 3)
+  或者
+  view.lyb.showHUD("加载成功") { style in
+    style.mode = .text
+    style.textFont = NSFont.boldSystemFont(ofSize: 20)
+    style.textColor = .orange
+  }.dismiss(3)
   ```
 
 ## 安装
@@ -75,6 +89,9 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
 3. 在需要的地方导入`import LYBProgressHUD`
 
 ## 更新记录
+
+### v1.1.1
+- 增加链式调用方式
 
 ### v1.1.0
 
