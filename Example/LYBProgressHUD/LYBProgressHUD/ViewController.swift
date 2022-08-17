@@ -21,25 +21,19 @@ class ViewController: NSViewController {
     }
     
     @IBAction func defaultClickHandler(_ sender: Any) {
-        view.lyb.showHUD("Loding...").dismiss(3)
+        view.lyb.showHUD("Loding...").dismiss(delay: 3)
 //        LYBProgressHUD.show(in: view, message: "")
 //        LYBProgressHUD.dismiss(in: view, after: 3)
     }
     
     @IBAction func indicatorClickHandler(_ sender: Any) {
-        view.lyb.showHUD { style in
-            style.mode = .indicator
-        }.dismiss(3)
+        view.lyb.showIndicator().dismiss(delay: 3)
 //        LYBProgressHUD.show(in: view, style: LYBProgressHUDStyle.init(.indicator))
 //        LYBProgressHUD.dismiss(in: view, after: 3)
     }
     
     @IBAction func textClickHandler(_ sender: Any) {
-        view.lyb.showHUD("加载成功") { style in
-            style.mode = .text
-            style.position = .top
-            style.textColor = NSColor.red
-        }.dismiss(3)
+        view.lyb.showMessage("加载成功").dismiss(delay: 3)
 //        LYBProgressHUD.show(in: view, message: "加载成功", style: LYBProgressHUDStyle.init(.text, position: .top))
 //        LYBProgressHUD.dismiss(in: view, after: 3)
     }
@@ -48,7 +42,7 @@ class ViewController: NSViewController {
         view.lyb.showHUD("加载中...") { style in
             style.mode = .text
             style.textColor = .orange
-        }.dismiss(3)
+        }.dismiss(delay: 3)
 //        let style = LYBProgressHUDStyle.init(.text, textColor: .orange)
 //        let hud = LYBProgressHUD.init(in: view, message: "加载中。。。", style: style)
 //        hud.show()
@@ -61,7 +55,7 @@ class ViewController: NSViewController {
             style.mode = .text
             style.textFont = textFont
             style.textColor = .orange
-        }.dismiss(3)
+        }.dismiss(delay: 3)
 //        let style = LYBProgressHUDStyle.init(.text, textFont: textFont)
 //        let hud = LYBProgressHUD.init(in: view, message: "加载中。。。", style: style)
 //        hud.show()
@@ -72,7 +66,7 @@ class ViewController: NSViewController {
         view.lyb.showHUD("加载中...") { style in
             style.mode = .text
             style.backgroundColor = .orange
-        }.dismiss(3)
+        }.dismiss(delay: 3)
 //        let style = LYBProgressHUDStyle.init(.text, backgroundColor: .orange)
 //        let hud = LYBProgressHUD.init(in: view, message: "加载中。。。", style: style)
 //        hud.show()
@@ -87,7 +81,8 @@ class ViewController: NSViewController {
         view.lyb.showHUD { style in
             style.mode = .indicator
             style.indicatorColor = .orange
-        }.dismiss(3)
+            style.hudSize = CGSize(width: 80, height: 80)
+        }.dismiss(delay: 3)
     }
 }
 

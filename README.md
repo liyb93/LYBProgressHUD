@@ -90,6 +90,11 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
 
 ## 更新记录
 
+### v1.1.2
+
+- 增加`text`和`indicator`mode快捷调用方式
+- 开放更多自定义属性
+
 ### v1.1.1
 - 增加链式调用方式
 

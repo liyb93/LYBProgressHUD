@@ -35,6 +35,21 @@ extension NSView: NamespaceCompatible { }
 
 public typealias StyleHandler = (LYBProgressHUDStyle)->()
 public extension Namespace where Base: NSView {
+    
+    @discardableResult
+    func showMessage(_ message: String) -> Namespace {
+        return showHUD(message) { style in
+            style.mode = .text
+        }
+    }
+    
+    @discardableResult
+    func showIndicator() -> Namespace {
+        return showHUD { style in
+            style.mode = .indicator
+        }
+    }
+    
     @discardableResult
     func showHUD(_ message: String? = nil, style: StyleHandler? = nil) -> Namespace {
         let hudStyle = LYBProgressHUDStyle.init()
@@ -44,7 +59,7 @@ public extension Namespace where Base: NSView {
     }
     
     @discardableResult
-    func dismiss(_ delay: TimeInterval = 0, completionHandler: CompletionHandler? = nil) -> Namespace {
+    func dismiss(delay: TimeInterval = 0, completionHandler: CompletionHandler? = nil) -> Namespace {
         LYBProgressHUD.dismiss(in: base, after: delay, completionHandler: completionHandler)
         return self
     }
