@@ -84,11 +84,29 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
 
 ### Cocoapods
 
-1. 将LYBProgressHUD添加到你项目的podfile中 `pod 'LYBProgressHUD'`
-2. 运行`pod install`进行安装
-3. 在需要的地方导入`import LYBProgressHUD`
+```
+pod 'LYBProgressHUD'
+```
+
+### Swift Package Manager
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/liyb93/LYBProgressHUD.git", .upToNextMajor(from: "1.1.3"))
+]
+```
+
+### Carthage
+
+```
+github "liyb93/LYBProgressHUD"
+```
 
 ## 更新记录
+
+v1.1.3
+
+- 支持Carthage和SPM
 
 ### v1.1.2
 

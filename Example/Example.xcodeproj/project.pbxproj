@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04470718289B5BD100096EBF /* NSView+LYBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04470717289B5BD100096EBF /* NSView+LYBProgressHUD.swift */; };
 		EAF1A5B3255E86C700EFD1CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A5B2255E86C700EFD1CF /* AppDelegate.swift */; };
 		EAF1A5B5255E86C700EFD1CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A5B4255E86C700EFD1CF /* ViewController.swift */; };
 		EAF1A5B7255E86C900EFD1CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAF1A5B6255E86C900EFD1CF /* Assets.xcassets */; };
 		EAF1A5BA255E86C900EFD1CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF1A5B8255E86C900EFD1CF /* Main.storyboard */; };
-		EAF1A5C5255E86E900EFD1CF /* LYBProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A5C4255E86E900EFD1CF /* LYBProgressHUD.swift */; };
-		EAF1A5CD255E885A00EFD1CF /* LYBProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF1A5CC255E885A00EFD1CF /* LYBProgressIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,7 +27,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04470717289B5BD100096EBF /* NSView+LYBProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+LYBProgressHUD.swift"; sourceTree = "<group>"; };
+		04509DA328D2B26400B8B6D7 /* LYBProgressHUD.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LYBProgressHUD.xcodeproj; path = ../LYBProgressHUD.xcodeproj; sourceTree = "<group>"; };
 		EAF1A5AF255E86C700EFD1CF /* LBProgressHUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBProgressHUD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAF1A5B2255E86C700EFD1CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EAF1A5B4255E86C700EFD1CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,8 +35,6 @@
 		EAF1A5B9255E86C900EFD1CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAF1A5BB255E86C900EFD1CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAF1A5BC255E86C900EFD1CF /* LYBProgressHUD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LYBProgressHUD.entitlements; sourceTree = "<group>"; };
-		EAF1A5C4255E86E900EFD1CF /* LYBProgressHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LYBProgressHUD.swift; sourceTree = "<group>"; };
-		EAF1A5CC255E885A00EFD1CF /* LYBProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LYBProgressIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +51,13 @@
 		EAF1A5A6255E86C700EFD1CF = {
 			isa = PBXGroup;
 			children = (
-				EAF1A5B1255E86C700EFD1CF /* LYBProgressHUD */,
+				EAF1A5B2255E86C700EFD1CF /* AppDelegate.swift */,
+				EAF1A5B4255E86C700EFD1CF /* ViewController.swift */,
+				EAF1A5B6255E86C900EFD1CF /* Assets.xcassets */,
+				EAF1A5B8255E86C900EFD1CF /* Main.storyboard */,
+				EAF1A5BB255E86C900EFD1CF /* Info.plist */,
+				EAF1A5BC255E86C900EFD1CF /* LYBProgressHUD.entitlements */,
+				04509DA328D2B26400B8B6D7 /* LYBProgressHUD.xcodeproj */,
 				EAF1A5B0255E86C700EFD1CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,30 +68,6 @@
 				EAF1A5AF255E86C700EFD1CF /* LBProgressHUD.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		EAF1A5B1255E86C700EFD1CF /* LYBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				EAF1A5B2255E86C700EFD1CF /* AppDelegate.swift */,
-				EAF1A5B4255E86C700EFD1CF /* ViewController.swift */,
-				EAF1A5C3255E86D800EFD1CF /* Source */,
-				EAF1A5B6255E86C900EFD1CF /* Assets.xcassets */,
-				EAF1A5B8255E86C900EFD1CF /* Main.storyboard */,
-				EAF1A5BB255E86C900EFD1CF /* Info.plist */,
-				EAF1A5BC255E86C900EFD1CF /* LYBProgressHUD.entitlements */,
-			);
-			path = LYBProgressHUD;
-			sourceTree = "<group>";
-		};
-		EAF1A5C3255E86D800EFD1CF /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				EAF1A5C4255E86E900EFD1CF /* LYBProgressHUD.swift */,
-				EAF1A5CC255E885A00EFD1CF /* LYBProgressIndicator.swift */,
-				04470717289B5BD100096EBF /* NSView+LYBProgressHUD.swift */,
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EAF1A5AA255E86C700EFD1CF /* Build configuration list for PBXProject "LYBProgressHUD" */;
+			buildConfigurationList = EAF1A5AA255E86C700EFD1CF /* Build configuration list for PBXProject "Example" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -163,10 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04470718289B5BD100096EBF /* NSView+LYBProgressHUD.swift in Sources */,
-				EAF1A5CD255E885A00EFD1CF /* LYBProgressIndicator.swift in Sources */,
 				EAF1A5B5255E86C700EFD1CF /* ViewController.swift in Sources */,
-				EAF1A5C5255E86E900EFD1CF /* LYBProgressHUD.swift in Sources */,
 				EAF1A5B3255E86C700EFD1CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,11 +279,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = LYBProgressHUD/LYBProgressHUD.entitlements;
+				CODE_SIGN_ENTITLEMENTS = LYBProgressHUD.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/LYBProgressHUD/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -327,11 +301,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = LYBProgressHUD/LYBProgressHUD.entitlements;
+				CODE_SIGN_ENTITLEMENTS = LYBProgressHUD.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/LYBProgressHUD/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -347,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EAF1A5AA255E86C700EFD1CF /* Build configuration list for PBXProject "LYBProgressHUD" */ = {
+		EAF1A5AA255E86C700EFD1CF /* Build configuration list for PBXProject "Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EAF1A5BD255E86C900EFD1CF /* Debug */,

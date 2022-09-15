@@ -7,9 +7,9 @@
 
 import Cocoa
 
-class LYBProgressHUDMaskView: NSView {
+public class LYBProgressHUDMaskView: NSView {
     /// 阻止事件穿透
-    override func mouseDown(with event: NSEvent) {}
+    public override func mouseDown(with event: NSEvent) {}
 }
 
 public class LYBProgressHUDStyle: NSObject {
@@ -191,7 +191,9 @@ public class LYBProgressHUD: NSView {
         label.stringValue = text
         label.isEditable = false
         label.alignment = .center
-        label.maximumNumberOfLines = 0
+        if #available(macOS 10.11, *) {
+            label.maximumNumberOfLines = 0
+        }
         label.textColor = style.textColor
         label.font = style.textFont
         // 背景色透明
