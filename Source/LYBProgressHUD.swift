@@ -65,7 +65,6 @@ public class LYBProgressHUDStyle: NSObject {
 
 public typealias CompletionHandler = ()->()
 public class LYBProgressHUD: NSView {
-    
     private var maskView: NSView!
     private var contentView: NSView!
     private var textLabel: NSTextField?
