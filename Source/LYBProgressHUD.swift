@@ -15,7 +15,7 @@ public class LYBProgressHUDMaskView: NSView {
 public class LYBProgressHUDStyle: NSObject {
     
     fileprivate struct Const {
-        /// 'default'与'indicator'样式最小size
+        /// 'default'、'indicator'、'custom'样式最小size
         static var hudMinSize: CGSize = CGSize(width: 150, height: 150)
         /// 'text'样式最小高度
         static var textMinHeight: CGFloat = 45.0
@@ -30,6 +30,7 @@ public class LYBProgressHUDStyle: NSObject {
         case `default`    // 指示器与文本
         case text   // 文本
         case indicator  // 指示器
+        case custom(NSView)   // 自定义视图
     }
     
     // 显示位置
@@ -87,14 +88,37 @@ public class LYBProgressHUD: NSView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupUI() {
+    public func show() {
+        superView.addSubview(self)
+        self.indicatorActivity?.startAnimation(nil)
+    }
+    
+    public func dismiss(after delay: TimeInterval = 0) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
+            self.removeFromSuperview()
+        }
+    }
+    
+    public class func show(in view: NSView, message: String? = nil, style: LYBProgressHUDStyle? = nil) {
+        let hud = LYBProgressHUD.init(in: view, message: message, style: style)
+        hud.show()
+    }
+    
+    public class func dismiss(in view: NSView, after delay: TimeInterval = 0, completionHandler: CompletionHandler? = nil) {
+        view.subviews.filter({ $0 is LYBProgressHUD }).forEach({ ($0 as? LYBProgressHUD)?.dismiss(after: delay) })
+        completionHandler?()
+    }
+}
+
+fileprivate extension LYBProgressHUD {
+    func setupUI() {
         // 清除子控件
         subviews.forEach { (view) in
             view.removeFromSuperview()
         }
-        
         // 遮罩
         maskView = LYBProgressHUDMaskView.init(frame: bounds)
+        var custom: NSView?
         
         var contentSize: CGSize = style.hudSize
         switch style.mode {
@@ -113,8 +137,9 @@ public class LYBProgressHUD: NSView {
                 indicatorActivity = createIndicator(with: .init(x: indicatorX, y: indicatorY, width: style.indicatorSize, height: style.indicatorSize))
                 
                 let labelY = indicatorY - size.height - style.hudSpace
-                let labelWidht = max(size.width + 10, contentWidth - style.hudSpace * 2)
-                textLabel = createLabel(with: .init(x: style.hudSpace - 5, y: labelY, width: labelWidht, height: size.height), text: text)
+                let labelWidth = max(size.width + 10, contentWidth - style.hudSpace * 2)
+                let labelX = (contentWidth - labelWidth) / 2.0
+                textLabel = createLabel(with: .init(x: labelX, y: labelY, width: labelWidth, height: size.height), text: text)
             } else {    // 无文本
                 let x = (contentSize.width / 2.0) - (style.indicatorSize / 2.0)
                 let y = (contentSize.height / 2.0) - (style.indicatorSize / 2.0)
@@ -134,9 +159,33 @@ public class LYBProgressHUD: NSView {
                 let contentWidth = size.width + style.hudSpace * 2
                 let contentHeight = max(size.height + style.hudSpace * 2, LYBProgressHUDStyle.Const.textMinHeight)
                 contentSize = CGSize.init(width: contentWidth , height: contentHeight)
-                textLabel = createLabel(with: .init(x: style.hudSpace - 5, y: style.hudSpace, width: size.width + 10, height: contentHeight - style.hudSpace * 2), text: text)
+                let labelWidth = size.width + 10
+                let labelX = (contentWidth - labelWidth) / 2.0
+                textLabel = createLabel(with: .init(x: labelX, y: style.hudSpace, width: labelWidth, height: contentHeight - style.hudSpace * 2), text: text)
             } else {
                 fatalError("message不可为nil")
+            }
+        case .custom(let view):
+            custom = view
+            if let text = message {
+                let maxWidth = superView.bounds.width - style.hudSpace * 2
+                let maxHeight = superView.bounds.height - style.indicatorSize - style.textHeight * 3
+                let size = (text as NSString).boundingRect(with: CGSize.init(width: maxWidth, height: maxHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: style.textFont]).size
+                
+                let contentWidth = max(size.width + style.hudSpace * 2, LYBProgressHUDStyle.Const.hudMinSize.width)
+                let contentHeight = max(size.height + style.hudSpace * 3 + style.indicatorSize, LYBProgressHUDStyle.Const.hudMinSize.height)
+                contentSize = CGSize.init(width: contentWidth , height: contentHeight)
+                
+                let indicatorX = (contentWidth / 2.0) - (style.indicatorSize / 2.0)
+                let indicatorY = (contentHeight / 2.0) - (style.indicatorSize / 2.0) + (size.height / 2.0)
+                view.frame = NSRect(x: indicatorX, y: indicatorY, width: style.indicatorSize, height: style.indicatorSize)
+                
+                let labelY = indicatorY - size.height - style.hudSpace
+                let labelWidth = max(size.width + 10, contentWidth - style.hudSpace * 2)
+                let labelX = (contentWidth - labelWidth) / 2.0
+                textLabel = createLabel(with: .init(x: labelX, y: labelY, width: labelWidth, height: size.height), text: text)
+            } else {
+                view.frame = NSRect(origin: .zero, size: contentSize)
             }
         }
         
@@ -175,17 +224,20 @@ public class LYBProgressHUD: NSView {
         if let label = textLabel {
             contentView.addSubview(label)
         }
+        if let custom = custom {
+            contentView.addSubview(custom)
+        }
         // 监听superview尺寸变化
         superView.window?.delegate = self
     }
 
-    private func createIndicator(with frame: CGRect) -> LYBProgressIndicator {
+    func createIndicator(with frame: CGRect) -> LYBProgressIndicator {
         let indicator = LYBProgressIndicator.init(frame: frame)
         indicator.color = style.indicatorColor
         return indicator
     }
     
-    private func createLabel(with frame: CGRect, text: String) -> NSTextField {
+    func createLabel(with frame: CGRect, text: String) -> NSTextField {
         let label = NSTextField.init(frame: frame)
         label.stringValue = text
         label.isEditable = false
@@ -200,39 +252,6 @@ public class LYBProgressHUD: NSView {
         label.drawsBackground = false
         label.backgroundColor = .clear
         return label
-    }
-    
-    public func show() {
-        NSAnimationContext.runAnimationGroup { (context) in
-            context.duration = 0.3
-            superView.addSubview(self)
-        } completionHandler: {
-            self.indicatorActivity?.startAnimation(nil)
-        }
-    }
-    
-    public func dismiss(after delay: TimeInterval = 0) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay) {
-            NSAnimationContext.runAnimationGroup { (context) in
-                context.duration = 0.3
-                self.removeFromSuperview()
-            }
-        }
-    }
-    
-    public class func show(in view: NSView, message: String? = nil, style: LYBProgressHUDStyle? = nil) {
-        let hud = LYBProgressHUD.init(in: view, message: message, style: style)
-        hud.show()
-    }
-    
-    public class func dismiss(in view: NSView, after delay: TimeInterval = 0, completionHandler: CompletionHandler? = nil) {
-        for view in view.subviews {
-            if let hud = view as? LYBProgressHUD {
-                hud.dismiss(after: delay)
-                break
-            }
-        }
-        completionHandler?()
     }
 }
 

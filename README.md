@@ -14,7 +14,7 @@ LYBProgressHUD是一款在OSX上简洁易用的HUD组件。
 
 ## 功能
 
-- 三种提示样式
+- 四种提示样式
 - 自定义属性
 - 简洁API，方便使用
 - 阻止事件穿透，防止父视图事件穿透
@@ -104,7 +104,11 @@ github "liyb93/LYBProgressHUD"
 
 ## 更新记录
 
-### v1.1.3
+### v1.1.4
+
+- 增加`custom`mode和快捷调用方式
+
+###v1.1.3
 
 - 支持Carthage和SPM
 

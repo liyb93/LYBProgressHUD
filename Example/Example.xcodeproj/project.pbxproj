@@ -13,6 +13,16 @@
 		EAF1A5BA255E86C900EFD1CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF1A5B8255E86C900EFD1CF /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EA42146E2A5E5AC300B58532 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 04509DA328D2B26400B8B6D7 /* LYBProgressHUD.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 04509D9928D2B16B00B8B6D7;
+			remoteInfo = LYBProgressHUD;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		EA20F2C52563ADD2008A31F4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -48,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA42146B2A5E5AC100B58532 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA42146F2A5E5AC300B58532 /* LYBProgressHUD.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EAF1A5A6255E86C700EFD1CF = {
 			isa = PBXGroup;
 			children = (
@@ -116,12 +134,28 @@
 			mainGroup = EAF1A5A6255E86C700EFD1CF;
 			productRefGroup = EAF1A5B0255E86C700EFD1CF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EA42146B2A5E5AC100B58532 /* Products */;
+					ProjectRef = 04509DA328D2B26400B8B6D7 /* LYBProgressHUD.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EAF1A5AE255E86C700EFD1CF /* LBProgressHUD */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EA42146F2A5E5AC300B58532 /* LYBProgressHUD.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = LYBProgressHUD.framework;
+			remoteRef = EA42146E2A5E5AC300B58532 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EAF1A5AD255E86C700EFD1CF /* Resources */ = {

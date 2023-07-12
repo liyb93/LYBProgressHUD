@@ -21,6 +21,12 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func customClickHandler(_ sender: Any) {
+        let imageView = NSImageView()
+        imageView.image = NSImage(named: "success")
+        view.lyb.showCustom(view: imageView, message: "加载成功").dismiss(delay: 3)
+    }
+    
     @IBAction func defaultClickHandler(_ sender: Any) {
         view.lyb.showHUD("Loding...").dismiss(delay: 3)
 //        LYBProgressHUD.show(in: view, message: "")
