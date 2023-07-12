@@ -11,8 +11,8 @@ Pod::Spec.new do |spec|
   spec.author             = { "liyb" => "libcm93@gmail.com" }
 
   spec.platform     = :osx
-  spec.platform     = :osx, "10.11"
-  spec.osx.deployment_target = '10.11'
+  spec.platform     = :osx, "10.13"
+  spec.osx.deployment_target = '10.13'
 
   spec.swift_version = "5.0"
   
