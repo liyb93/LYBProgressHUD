@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = "LYBProgressHUD"
-  spec.version      = "1.1.3"
+  spec.version      = "1.1.4"
   spec.summary      = "HUD"
   spec.description  = <<-DESC
   一款OSX平台上简洁易用的HUD组件
